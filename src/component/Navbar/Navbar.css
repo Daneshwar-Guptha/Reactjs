@@ -1,0 +1,18 @@
+.NavBarConatiner{
+    background-color:#eb4034;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    
+}
+
+.NavbarList{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: serif;
+
+}
