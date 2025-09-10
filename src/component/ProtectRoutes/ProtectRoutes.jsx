@@ -1,8 +1,10 @@
-const ProtectRoutes =()=>{
+import { Outlet, Navigate } from "react-router-dom";
 
-    const isAutheticated = localStorage.getItem("tokenId") ? true : false;
-    return isAutheticated ?  <Dashboard/> : <Navigate to ="/login" />
+const ProtectRoutes = () => {
+  const authorization = localStorage.getItem("access_token");
 
-}
+
+  return authorization ? <Outlet /> : <Navigate to="/" />;
+};
 
 export default ProtectRoutes;

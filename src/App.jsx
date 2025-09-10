@@ -9,6 +9,7 @@ import Login from "./component/Login/Login";
 import { useState } from "react";
 import ProtectRoutes from "./component/ProtectRoutes/ProtectRoutes"
 
+
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
 
@@ -17,35 +18,27 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      {!loginStatus ? (
-        <Login name={changeStatus} />
-      ) : (
-        <>
-          <Navbar />
-          <Routes>
-            <Route path="/Home" element={
-              
-               <ProtectRoutes>
-                <Home />
+    
+   
+        <> 
+        {localStorage.getItem("access_token") &&<Navbar/>}
+          
+          <Routes  >
 
-              </ProtectRoutes>
-              
-             } />
-            <Route path="/About" element={
-              <ProtectRoutes>
-                <About />
+            
+            <Route path= "/" element={<Login/>} />
 
-              </ProtectRoutes>
-
-            } />
-            {/* <Route path="/Features" element={<Features />} />
+            <Route element={<ProtectRoutes/>} >
+            <Route path="/Home" element={<Home />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Features" element={<Features />} />
             <Route path="/Products" element={<Products />} />
-            <Route path="/Contact" element={<Contact />} /> */}
+            <Route path="/Contact" element={<Contact />} />
+            </Route>
           </Routes>
         </>
-      )}
-    </BrowserRouter>
+      
+   
   );
 }
 

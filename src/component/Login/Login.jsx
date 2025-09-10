@@ -4,22 +4,26 @@ import { useNavigate } from "react-router-dom";
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const {name} = props
-   const navigate = useNavigate();
+  const { name } = props
+  const navigate = useNavigate();
 
-  
+
 
   function checkTheDetails(event) {
-    
+
     event.preventDefault();
 
-    if (userName.trim() !== "" && password.trim() !== "") {
-        name(true)
-         navigate("/Home");
-         localStorage.setItem("tokenId", true) 
+    if (userName === "sai"  && password === "sai") {
+      localStorage.setItem("access_token",true)
+        navigate("/Home");
+         window.location.reload(); 
+     
+    }
+    else{
+      alert("Enter correct details")
     }
   }
-  
+
 
   return (
     <>
