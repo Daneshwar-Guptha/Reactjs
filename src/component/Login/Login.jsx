@@ -15,7 +15,8 @@ const Login = (props) => {
 
     if (userName.trim() !== "" && password.trim() !== "") {
         name(true)
-         navigate("/Home"); 
+         navigate("/Home");
+         localStorage.setItem("tokenId", true) 
     }
   }
   

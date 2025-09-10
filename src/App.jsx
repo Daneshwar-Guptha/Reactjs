@@ -7,6 +7,7 @@ import Products from "./component/Products/Products";
 import Contact from "./component/Contact/Contact";
 import Login from "./component/Login/Login";
 import { useState } from "react";
+import ProtectRoutes from "./component/ProtectRoutes/ProtectRoutes"
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -18,16 +19,29 @@ function App() {
   return (
     <BrowserRouter>
       {!loginStatus ? (
-        <Login name={changeStatus}  />
+        <Login name={changeStatus} />
       ) : (
         <>
           <Navbar />
           <Routes>
-            <Route path="/Home" element={<Home />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Features" element={<Features />} />
+            <Route path="/Home" element={
+              
+               <ProtectRoutes>
+                <Home />
+
+              </ProtectRoutes>
+              
+             } />
+            <Route path="/About" element={
+              <ProtectRoutes>
+                <About />
+
+              </ProtectRoutes>
+
+            } />
+            {/* <Route path="/Features" element={<Features />} />
             <Route path="/Products" element={<Products />} />
-            <Route path="/Contact" element={<Contact />} />
+            <Route path="/Contact" element={<Contact />} /> */}
           </Routes>
         </>
       )}
